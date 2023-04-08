@@ -93,6 +93,8 @@ describe('Post API', () => {
       .send({
         title: 'My First Post',
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        authorId: '00000000-0000-0000-0000-000000000000',
+        published: true,
       })
       .expect(201);
     expect(res.body.title).toEqual('My First Post');
@@ -122,7 +124,10 @@ describe('Post API', () => {
     const res = await request(app.getHttpServer())
       .put(`/post/${postId}`)
       .send({
-        title: 'My Updated Post',
+        title: 'My First Post',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        authorId: '00000000-0000-0000-0000-000000000000',
+        published: true,
       })
       .expect(200);
     expect(res.body.title).toEqual('My Updated Post');
